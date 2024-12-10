@@ -1,0 +1,372 @@
+
+
+ScreenManager:
+    Page1:
+    Page2:
+    Page3:
+    Page4:
+    Page5:
+    Page7:
+    predictionEmissionsPage:
+    predictionNetEmissionsPerSectorPage:
+    predictionNetEmissionsPage:
+<Page1>:
+    name:'page1'
+    MDScreen:
+        md_bg_color:[100/255,150/255,154/255,1]
+        
+        MDCard:
+            size_hint:None,None
+            size:1000,1050
+            md_bg_color:[150/255,250/255,255/255,1]
+            pos_hint:{"center_x":.5,"center_y":.5}
+            elevation:0
+            padding:100
+            spacing:100
+            orientation:'vertical'
+            MDLabel:
+                text:'Carbon Emissions Prediction App'
+                font_style:'Button'
+                size_hint_y:None
+                height:self.texture_size[1]
+                halign:'center'
+                font_size:80
+            
+        
+            MDRectangleFlatButton:
+                text:'LOGIN'
+                pos_hint:{"center_x":.5}
+                font_size:50
+                on_press:root.manager.current='page2'
+            MDRectangleFlatButton:
+                text:'REGISTER'
+                pos_hint:{"center_x":.5}
+                font_size:50
+                on_press:root.manager.current='page3'
+            MDRectangleFlatButton:
+                text:'Carbon Emission App Guide'
+                pos_hint:{"center_x":.5}
+                font_size:50
+                on_press:root.manager.current='page7'         
+            Widget:
+                size_hint_y:None
+                height:  30 
+                   
+<Page2>:
+    name:'page2'
+    MDScreen:
+        md_bg_color:[120/255,150/255,154/255,1]
+        
+        MDCard:
+            size_hint:None,None
+            size:1000,1050
+            md_bg_color:[155/255,250/255,255/255,1]
+            pos_hint:{"center_x":.5,"center_y":.5}
+       
+            padding:125
+            spacing:128
+            orientation:'vertical'
+            MDLabel:
+                text:'Login'
+                font_style:'Button'
+                size_hint_y:None
+                height:self.texture_size[1]
+                halign:'center'
+                font_size:60
+            
+            MDTextField:
+                id: username
+                hint_text:'USERNAME'    
+                icon_right:'account'
+                width:200
+                size_hint_x:None
+                font_size:50
+                pos_hint:{"center_x":.5}
+            MDTextField:
+                property: round
+                id: password
+                hint_text:'password'    
+                icon_right:'eye-off'
+                width:200
+                size_hint_x:None
+                font_size:50
+                pos_hint:{"center_x":0.5}   
+                password:True 
+            MDRectangleFlatButton:
+                id: pavibutton
+                text:'LOGIN'
+                pos_hint:{"center_x":.5}
+                font_size:50
+                on_state:if (app.login_user())==True: root.manager.current='page5'
+                on_state:if (app.login_user())==False: root.manager.current='page1'                 
+
+                
+            Widget:
+                size_hint_y:None
+                height:  30      
+                  
+    
+                
+            
+              
+                
+
+<Page3>:
+    name:'page3'
+    MDScreen:
+        md_bg_color:[155/255,250/255,255/255,1]
+        
+        MDCard:
+            size_hint:None,None
+            size:300,650
+            md_bg_color:[155/255,250/255,255/255,1]
+            pos_hint:{"center_x":.5}
+      
+            padding:12
+            spacing:12
+            orientation:'vertical'
+            
+
+            MDLabel:
+                text:'Register'
+                font_style:'Button'
+                size_hint_y:None
+                height:self.texture_size[1]
+                halign:'center'
+                font_size:60
+            MDTextField:
+                id: fname
+                hint_text:'First Name'    
+                icon_right:'account'
+                width:200
+                size_hint_x:None
+                font_size:25
+                pos_hint:{"center_x":.5,"center_y":-0.8}
+            MDTextField:
+                id: lname
+                hint_text:'Last Name'    
+                icon_right:'account'
+                width:200
+                size_hint_x:None
+                font_size:25
+                pos_hint:{"center_x":.5,"center_y":-0.8}   
+            MDTextField:
+                id: username
+                hint_text:'USERNAME'    
+                icon_right:'account'
+                width:200
+                size_hint_x:None
+                font_size:25
+                pos_hint:{"center_x":.5,"center_y":-0.8}
+            
+            
+                    
+            MDTextField:
+                id: password
+                hint_text:'password'    
+                icon_right:'eye-off'
+                width:200
+                size_hint_x:None
+                font_size:25
+                pos_hint:{"center_x":0.5}   
+                password:True 
+
+            MDRectangleFlatButton:
+                text:'Register'
+                pos_hint:{"center_x":.5}
+                font_size:25
+                on_press:app.register_user()
+            MDRectangleFlatButton:
+                text:'Back'
+                pos_hint:{"center_x":.5}
+                font_size:25
+                on_press: root.manager.current='page1'
+            
+<Page4>:
+    name:'page4'
+    MDFloatLayout:
+    
+        MDLabel:
+            text:'WELCOME TO PAGE3'
+            halign:'center'
+            font_size:10
+        MDCard:
+            size_hint:None,None
+            size:300,500
+            pos_hint:{"center_x":.5,"center_y":.5}
+            elevation:30
+            
+            padding:25
+            spacing:28
+        MDRectangleFlatButton:
+            text:'Back'
+            pos_hint:{"center_x":.5,"center_y":.5}
+            on_press:root.manager.current='page1'            
+
+<predictionEmissionsPage>:
+    name:'page11'
+    MDScreen:
+        md_bg_color:[155/255,250/255,255/255,1]
+        
+        MDCard:
+            size_hint:None,None
+            size:2000,2000
+            md_bg_color:[155/255,250/255,255/255,1]
+            
+         
+            padding:5
+            spacing:28
+            orientation:'vertical'
+    
+            MDLabel:
+                text:app.getPredictionForAllSector('/Users/pavitrakamleshkumarmodi/Downloads/SDC_Hackathon_Comp_Package/emissions.csv')
+                font_size:30
+
+            MDRectangleFlatButton:
+                text:'Generate Graph'
+                pos_hint:{"center_x":.5,"center_y":.5}
+                on_press:app.generate_graph_all_sectors_done('/Users/pavitrakamleshkumarmodi/Downloads/SDC_Hackathon_Comp_Package/emissions.csv')
+                font_size:30
+            
+            MDRectangleFlatButton:
+                text:'Back'
+                pos_hint:{"center_x":.5,"center_y":.5}
+                on_press:root.manager.current='page5' 
+                font_size:30
+
+<predictionNetEmissionsPerSectorPage>:
+    name:'page12'
+    MDScreen:
+        md_bg_color:[155/255,250/255,255/255,1]
+        
+        MDCard:
+            size_hint:None,None
+            size:2000,2000
+            md_bg_color:[155/255,250/255,255/255,1]
+            
+         
+            padding:5
+            spacing:28
+            orientation:'vertical'
+    
+            MDLabel:
+                text:app.getNetPredictionForPerSector('/Users/pavitrakamleshkumarmodi/Downloads/SDC_Hackathon_Comp_Package/emissions.csv','/Users/pavitrakamleshkumarmodi/Downloads/SDC_Hackathon_Comp_Package/offsets.csv')
+                font_size:30
+            
+            MDRectangleFlatButton:
+                text:'Generate Graph'
+                pos_hint:{"center_x":.5,"center_y":.5}
+                on_press:app.generate_graph_all_sectors_NET_done('/Users/pavitrakamleshkumarmodi/Downloads/SDC_Hackathon_Comp_Package/emissions.csv', '/Users/pavitrakamleshkumarmodi/Downloads/SDC_Hackathon_Comp_Package/offsets.csv')
+                font_size:30
+
+            MDRectangleFlatButton:
+                text:'Back'
+                pos_hint:{"center_x":.5,"center_y":.5}
+                on_press:root.manager.current='page5' 
+                font_size:30
+
+<predictionNetEmissionsPage>:
+    name:'page13'
+    MDScreen:
+        md_bg_color:[155/255,250/255,255/255,1]
+        
+        MDCard:
+            size_hint:None,None
+            size:2000,2000
+            md_bg_color:[155/255,250/255,255/255,1]
+            
+         
+            padding:5
+            spacing:28
+            orientation:'vertical'
+    
+            MDLabel:
+                text:app.getNetPrediction('/Users/pavitrakamleshkumarmodi/Downloads/SDC_Hackathon_Comp_Package/emissions.csv','/Users/pavitrakamleshkumarmodi/Downloads/SDC_Hackathon_Comp_Package/offsets.csv')
+                font_size:30
+            
+            
+            MDRectangleFlatButton:
+                text:'Back'
+                pos_hint:{"center_x":.5,"center_y":.5}
+                on_press:root.manager.current='page5' 
+                font_size:30
+
+
+<Page5>:
+    name:'page5'
+    MDScreen:
+        md_bg_color:[155/255,250/255,255/255,1]
+        
+        MDCard:
+            size_hint:None,None
+            size:300,350
+            md_bg_color:[155/255,250/255,255/255,1]
+            pos_hint:{"center_x":.5,"center_y":.5}
+         
+            padding:25
+            spacing:28
+            orientation:'vertical'
+            MDRectangleFlatButton:
+                text:'Generate Emissions Graph'
+                pos_hint:{"center_x":.5}
+                font_size:25
+                on_press:app.create_emissions_graph('/Users/pavitrakamleshkumarmodi/Downloads/SDC_Hackathon_Comp_Package/emissions.csv')
+            MDRectangleFlatButton:
+                text:'Generate Offsets Graph'
+                pos_hint:{"center_x":.5}
+                font_size:25
+                on_press:app.create_emissions_graph('/Users/pavitrakamleshkumarmodi/Downloads/SDC_Hackathon_Comp_Package/offsets.csv')
+            MDRectangleFlatButton:
+                text:'Generate Net Emissions Graph'
+                pos_hint:{"center_x":.5}
+                font_size:25
+                on_press:app.net_emissions_graph('/Users/pavitrakamleshkumarmodi/Downloads/SDC_Hackathon_Comp_Package/emissions.csv','/Users/pavitrakamleshkumarmodi/Downloads/SDC_Hackathon_Comp_Package/offsets.csv')
+            MDRectangleFlatButton:
+                text:'Generate Predictions for next year for Emissions only'
+                pos_hint:{"center_x":.5}
+                font_size:25
+                on_press:root.manager.current='page11' 
+            MDRectangleFlatButton:
+                text:'Generate Predictions per sector for Net Emissions'
+                pos_hint:{"center_x":.5}
+                font_size:25
+                on_press:root.manager.current='page12'
+            MDRectangleFlatButton:
+                text:'Generate Net Emission Predictions for next year'
+                pos_hint:{"center_x":.5}
+                font_size:25
+                on_press:root.manager.current='page13'
+
+<Page7>:
+    name:'page7'
+    MDScreen:
+        md_bg_color:[120/255,150/255,154/255,1]
+        
+        MDCard:
+            size_hint:None,None
+            size:1000,1050
+            md_bg_color:[155/255,250/255,255/255,1]
+            pos_hint:{"center_x":.5,"center_y":.5}
+         
+            padding:100
+            spacing:100
+            orientation:'vertical'
+            MDLabel:
+                text:'Help App Guide'
+                font_style:'Button'
+                size_hint_y:None
+                height:self.texture_size[1]
+                halign:'center'
+                font_size:60
+            MDLabel:
+                text:'The app is built to give information to users about the the carbon emissions.'
+                size_hint_y:None
+                height:self.texture_size[1]
+                font_size:60
+            MDRectangleFlatButton:
+                text:'Back'
+                pos_hint:{"center_x":.5, "center_y":4}
+                font_size:60
+            
+                on_press: root.manager.current='page1'
+            
